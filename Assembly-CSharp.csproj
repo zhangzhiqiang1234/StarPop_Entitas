@@ -63,6 +63,8 @@
     <Compile Include="Assets\DesperateDevs\Compile.cs" />
     <Compile Include="Assets\Generated\Contexts.cs" />
     <Compile Include="Assets\Generated\Feature.cs" />
+    <Compile Include="Assets\Generated\Game\Components\GameGameConfigComponent.cs" />
+    <Compile Include="Assets\Generated\Game\Components\GameStarComponent.cs" />
     <Compile Include="Assets\Generated\Game\GameAttribute.cs" />
     <Compile Include="Assets\Generated\Game\GameComponentsLookup.cs" />
     <Compile Include="Assets\Generated\Game\GameContext.cs" />
@@ -78,6 +80,14 @@
     <Compile Include="Assets\Generated\Logic\LogicContext.cs" />
     <Compile Include="Assets\Generated\Logic\LogicEntity.cs" />
     <Compile Include="Assets\Generated\Logic\LogicMatcher.cs" />
+    <Compile Include="Assets\Script\Component\GameConfigComponent.cs" />
+    <Compile Include="Assets\Script\Component\StarComponent.cs" />
+    <Compile Include="Assets\Script\Game\GameContextExtensions.cs" />
+    <Compile Include="Assets\Script\Game\GameController.cs" />
+    <Compile Include="Assets\Script\Game\GameControllerBehaviour.cs" />
+    <Compile Include="Assets\Script\Game\GameSystem.cs" />
+    <Compile Include="Assets\Script\Game\ScriptableGameConfig.cs" />
+    <Compile Include="Assets\Script\System\BoardSystem.cs" />
     <None Include="Assets\Entitas\LICENSE.txt" />
     <None Include="Assets\Entitas\Entitas.xml" />
     <Reference Include="Unity.TextMeshPro.Editor">
@@ -296,6 +306,30 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="DesperateDevs.Logging">
+      <HintPath>D:/UnityProject/StarPop_Entitas/Assets/DesperateDevs/DesperateDevs.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="DesperateDevs.Networking">
+      <HintPath>D:/UnityProject/StarPop_Entitas/Assets/DesperateDevs/DesperateDevs.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="DesperateDevs.Serialization">
+      <HintPath>D:/UnityProject/StarPop_Entitas/Assets/DesperateDevs/DesperateDevs.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="DesperateDevs.Utils">
+      <HintPath>D:/UnityProject/StarPop_Entitas/Assets/DesperateDevs/DesperateDevs.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="Entitas.CodeGeneration.Attributes">
+      <HintPath>D:/UnityProject/StarPop_Entitas/Assets/Entitas/Entitas.CodeGeneration.Attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="Entitas">
+      <HintPath>D:/UnityProject/StarPop_Entitas/Assets/Entitas/Entitas.dll</HintPath>
+    </Reference>
+    <Reference Include="Entitas.Unity">
+      <HintPath>D:/UnityProject/StarPop_Entitas/Assets/Entitas/Entitas.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Entitas.VisualDebugging.Unity">
+      <HintPath>D:/UnityProject/StarPop_Entitas/Assets/Entitas/Entitas.VisualDebugging.Unity.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>D:/UnityProject/StarPop_Entitas/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
@@ -304,30 +338,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>D:/UnityProject/StarPop_Entitas/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
-    </Reference>
-    <Reference Include="DesperateDevs.Networking">
-      <HintPath>D:/UnityProject/StarPop_Entitas/Assets/DesperateDevs/DesperateDevs.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="DesperateDevs.Utils">
-      <HintPath>D:/UnityProject/StarPop_Entitas/Assets/DesperateDevs/DesperateDevs.Utils.dll</HintPath>
-    </Reference>
-    <Reference Include="Entitas.Unity">
-      <HintPath>D:/UnityProject/StarPop_Entitas/Assets/Entitas/Entitas.Unity.dll</HintPath>
-    </Reference>
-    <Reference Include="Entitas">
-      <HintPath>D:/UnityProject/StarPop_Entitas/Assets/Entitas/Entitas.dll</HintPath>
-    </Reference>
-    <Reference Include="Entitas.CodeGeneration.Attributes">
-      <HintPath>D:/UnityProject/StarPop_Entitas/Assets/Entitas/Entitas.CodeGeneration.Attributes.dll</HintPath>
-    </Reference>
-    <Reference Include="DesperateDevs.Serialization">
-      <HintPath>D:/UnityProject/StarPop_Entitas/Assets/DesperateDevs/DesperateDevs.Serialization.dll</HintPath>
-    </Reference>
-    <Reference Include="DesperateDevs.Logging">
-      <HintPath>D:/UnityProject/StarPop_Entitas/Assets/DesperateDevs/DesperateDevs.Logging.dll</HintPath>
-    </Reference>
-    <Reference Include="Entitas.VisualDebugging.Unity">
-      <HintPath>D:/UnityProject/StarPop_Entitas/Assets/Entitas/Entitas.VisualDebugging.Unity.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:/Unity/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
