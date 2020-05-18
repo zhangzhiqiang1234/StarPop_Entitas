@@ -11,7 +11,7 @@ public class BoardSystem : IInitializeSystem
 
     public void Initialize()
     {
-        _gameContext.InitBoradDatas(10, 10);
+        _gameContext.InitBoradDatas(_gameContext.gameConfig.config.GetBoardRow(), _gameContext.gameConfig.config.GetBoardCol());
     }
 }
 

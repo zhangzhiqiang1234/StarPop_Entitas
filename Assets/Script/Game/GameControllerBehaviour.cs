@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameControllerBehaviour : MonoBehaviour
 {
     public ScriptableGameConfig gameConfig;
-    GameController _gameController;
+    private GameController _gameController;
     void Awake()
     {
         _gameController = new GameController(gameConfig);

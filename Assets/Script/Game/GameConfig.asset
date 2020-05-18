@@ -18,3 +18,5 @@ MonoBehaviour:
   - purple
   - red
   - yellow
+  BoardRow: 18
+  BoradCol: 10

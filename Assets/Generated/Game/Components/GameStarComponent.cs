@@ -8,25 +8,29 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly StarComponent starComponent = new StarComponent();
+    public StarComponent star { get { return (StarComponent)GetComponent(GameComponentsLookup.Star); } }
+    public bool hasStar { get { return HasComponent(GameComponentsLookup.Star); } }
 
-    public bool isStar {
-        get { return HasComponent(GameComponentsLookup.Star); }
-        set {
-            if (value != isStar) {
-                var index = GameComponentsLookup.Star;
-                if (value) {
-                    var componentPool = GetComponentPool(index);
-                    var component = componentPool.Count > 0
-                            ? componentPool.Pop()
-                            : starComponent;
+    public void AddStar(int newStarType, int newRolNum, int newColNum) {
+        var index = GameComponentsLookup.Star;
+        var component = (StarComponent)CreateComponent(index, typeof(StarComponent));
+        component.starType = newStarType;
+        component.rolNum = newRolNum;
+        component.colNum = newColNum;
+        AddComponent(index, component);
+    }
 
-                    AddComponent(index, component);
-                } else {
-                    RemoveComponent(index);
-                }
-            }
-        }
+    public void ReplaceStar(int newStarType, int newRolNum, int newColNum) {
+        var index = GameComponentsLookup.Star;
+        var component = (StarComponent)CreateComponent(index, typeof(StarComponent));
+        component.starType = newStarType;
+        component.rolNum = newRolNum;
+        component.colNum = newColNum;
+        ReplaceComponent(index, component);
+    }
+
+    public void RemoveStar() {
+        RemoveComponent(GameComponentsLookup.Star);
     }
 }
 
