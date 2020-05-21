@@ -41,7 +41,8 @@ public class StarView : MonoBehaviour, IView, IPositionListener, IDestroyListene
 
     public void OnDestroy(GameEntity entity)
     {
-        throw new System.NotImplementedException();
+        gameObject.Unlink();
+        Object.Destroy(this.gameObject);
     }
 
     public void OnPosition(GameEntity entity, float x, float y)

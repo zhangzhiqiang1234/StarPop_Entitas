@@ -4,6 +4,6 @@
 public class StarComponent : IComponent
 {
     public int starType;
-    public int rolNum;
+    public int rowNum;
     public int colNum;
 }

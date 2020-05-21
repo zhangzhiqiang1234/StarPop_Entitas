@@ -10,5 +10,13 @@ public class GameSystem : Feature
         Add(new AddViewSystem(contexts));
 
         Add(new InputSystem(contexts));
+
+        Add(new SelectStarSystem(contexts));
+
+        Add(new GameEventSystems(contexts));
+
+        Add(new GameCleanUpSystem(contexts));
+
+
     }
 }

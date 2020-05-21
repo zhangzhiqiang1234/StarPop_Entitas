@@ -31,7 +31,7 @@ public partial class GameContext
 
                 entity.AddPosition(startPosX+(j),startPosY+(i));
 
-                string key = string.Format("{0}_{1}", i, j);
+                string key = getIndexKey(i,j);
                 if(_boardEntityDic.ContainsKey(key))
                 {
                     _boardEntityDic[key] = entity;
@@ -51,5 +51,88 @@ public partial class GameContext
     public float GetStartPosY()
     {
         return startPosY;
+    }
+
+    public void ClearData(int row,int col)
+    {
+        if (isCorrectRow(row) && isCorrectCol(col))
+        {
+            _boardDatas[row, col] = -1;
+            _boardEntityDic[getIndexKey(row, col)] = null;
+        }
+    }
+
+    /// <summary>
+    /// 广度优先遍历
+    /// </summary>
+    /// <param name="row"></param>
+    /// <param name="col"></param>
+    /// <returns></returns>
+    public List<GameEntity> DepthSearch(int row,int col)
+    {
+        List<GameEntity> resultList = new List<GameEntity>();
+        Queue<GameEntity> queue = new Queue<GameEntity>();
+
+        GameEntity curEntity = getEntityByRowAndCol(row, col);
+        if (curEntity != null)
+        {
+            queue.Enqueue(curEntity);
+            resultList.Add(curEntity);
+            while (queue.Count > 0)
+            {
+                GameEntity popEntity = queue.Dequeue();
+                int checkRow = popEntity.star.rowNum;
+                int checkCol = popEntity.star.colNum;
+
+                //左右
+                for (int i = -1; i < 2; i = i + 2)
+                {
+                    int c = checkCol + i;
+                    GameEntity checkEntity = getEntityByRowAndCol(checkRow, c);
+                    if (checkEntity != null && checkEntity.star.starType == popEntity.star.starType && !resultList.Contains(checkEntity))
+                    {
+                        resultList.Add(checkEntity);
+                        queue.Enqueue(checkEntity);
+                    }
+                }
+
+                //上下
+                for (int i = -1; i < 2; i = i + 2)
+                {
+                    int r = checkRow + i;
+                    GameEntity checkEntity = getEntityByRowAndCol(r, checkCol);
+                    if (checkEntity != null && checkEntity.star.starType == popEntity.star.starType && !resultList.Contains(checkEntity))
+                    {
+                        resultList.Add(checkEntity);
+                        queue.Enqueue(checkEntity);
+                    }
+                }
+            }
+        }
+        return resultList;
+    }
+
+    public GameEntity getEntityByRowAndCol(int row,int col)
+    {
+        if (isCorrectRow(row) && isCorrectCol(col))
+        {
+            return _boardEntityDic[getIndexKey(row, col)];
+        }
+        return null;
+    }
+
+    private bool isCorrectRow(int row)
+    {
+        return (row >= 0 && row < gameConfig.config.GetBoardRow());
+    }
+
+    private bool isCorrectCol(int col)
+    {
+        return (col >= 0 && col < gameConfig.config.GetBoardCol());
+    }
+
+    private string getIndexKey(int row,int col)
+    {
+        return string.Format("{0}_{1}", row, col);
     }
 }

@@ -2,6 +2,5 @@
 
 public class SelectStarComponent : IComponent
 {
-    public int row;
-    public int col;
+    public bool isSelect;
 }

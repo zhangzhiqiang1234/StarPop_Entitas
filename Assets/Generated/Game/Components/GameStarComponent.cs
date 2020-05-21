@@ -11,20 +11,20 @@ public partial class GameEntity {
     public StarComponent star { get { return (StarComponent)GetComponent(GameComponentsLookup.Star); } }
     public bool hasStar { get { return HasComponent(GameComponentsLookup.Star); } }
 
-    public void AddStar(int newStarType, int newRolNum, int newColNum) {
+    public void AddStar(int newStarType, int newRowNum, int newColNum) {
         var index = GameComponentsLookup.Star;
         var component = (StarComponent)CreateComponent(index, typeof(StarComponent));
         component.starType = newStarType;
-        component.rolNum = newRolNum;
+        component.rowNum = newRowNum;
         component.colNum = newColNum;
         AddComponent(index, component);
     }
 
-    public void ReplaceStar(int newStarType, int newRolNum, int newColNum) {
+    public void ReplaceStar(int newStarType, int newRowNum, int newColNum) {
         var index = GameComponentsLookup.Star;
         var component = (StarComponent)CreateComponent(index, typeof(StarComponent));
         component.starType = newStarType;
-        component.rolNum = newRolNum;
+        component.rowNum = newRowNum;
         component.colNum = newColNum;
         ReplaceComponent(index, component);
     }

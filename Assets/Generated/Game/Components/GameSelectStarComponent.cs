@@ -8,27 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public SelectStarComponent selectStar { get { return (SelectStarComponent)GetComponent(GameComponentsLookup.SelectStar); } }
-    public bool hasSelectStar { get { return HasComponent(GameComponentsLookup.SelectStar); } }
+    static readonly SelectStarComponent selectStarComponent = new SelectStarComponent();
 
-    public void AddSelectStar(int newRow, int newCol) {
-        var index = GameComponentsLookup.SelectStar;
-        var component = (SelectStarComponent)CreateComponent(index, typeof(SelectStarComponent));
-        component.row = newRow;
-        component.col = newCol;
-        AddComponent(index, component);
-    }
+    public bool isSelectStar {
+        get { return HasComponent(GameComponentsLookup.SelectStar); }
+        set {
+            if (value != isSelectStar) {
+                var index = GameComponentsLookup.SelectStar;
+                if (value) {
+                    var componentPool = GetComponentPool(index);
+                    var component = componentPool.Count > 0
+                            ? componentPool.Pop()
+                            : selectStarComponent;
 
-    public void ReplaceSelectStar(int newRow, int newCol) {
-        var index = GameComponentsLookup.SelectStar;
-        var component = (SelectStarComponent)CreateComponent(index, typeof(SelectStarComponent));
-        component.row = newRow;
-        component.col = newCol;
-        ReplaceComponent(index, component);
-    }
-
-    public void RemoveSelectStar() {
-        RemoveComponent(GameComponentsLookup.SelectStar);
+                    AddComponent(index, component);
+                } else {
+                    RemoveComponent(index);
+                }
+            }
+        }
     }
 }
 

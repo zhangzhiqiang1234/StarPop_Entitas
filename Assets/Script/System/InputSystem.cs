@@ -19,10 +19,10 @@ public class InputSystem : IExecuteSystem
             int row;
             int col;
             ComputeRowAndCol(mousePos, out row, out col);
-            if(row >= 0 && row <= _contexts.game.gameConfig.config.GetBoardRow() && 
-                col >= 0 && col <= _contexts.game.gameConfig.config.GetBoardCol())
+            if (_contexts.game.getEntityByRowAndCol(row,col) != null)
             {
                 Debug.Log(string.Format("row {0} col {1}", row, col));
+                _contexts.game.CreateEntity().AddClickStar(row, col);
             }
 
         }
