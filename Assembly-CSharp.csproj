@@ -64,11 +64,14 @@
     <Compile Include="Assets\Generated\Contexts.cs" />
     <Compile Include="Assets\Generated\Events\Components\DestroyListenerComponent.cs" />
     <Compile Include="Assets\Generated\Events\Components\PositionListenerComponent.cs" />
+    <Compile Include="Assets\Generated\Events\Components\SelectStarListenerComponent.cs" />
     <Compile Include="Assets\Generated\Events\GameEventSystems.cs" />
     <Compile Include="Assets\Generated\Events\Interfaces\IDestroyListener.cs" />
     <Compile Include="Assets\Generated\Events\Interfaces\IPositionListener.cs" />
+    <Compile Include="Assets\Generated\Events\Interfaces\ISelectStarListener.cs" />
     <Compile Include="Assets\Generated\Events\Systems\DestroyEventSystem.cs" />
     <Compile Include="Assets\Generated\Events\Systems\PositionEventSystem.cs" />
+    <Compile Include="Assets\Generated\Events\Systems\SelectStarEventSystem.cs" />
     <Compile Include="Assets\Generated\Feature.cs" />
     <Compile Include="Assets\Generated\Game\Components\GameAssetComponent.cs" />
     <Compile Include="Assets\Generated\Game\Components\GameClickStarComponent.cs" />
@@ -78,6 +81,7 @@
     <Compile Include="Assets\Generated\Game\Components\GamePositionComponent.cs" />
     <Compile Include="Assets\Generated\Game\Components\GamePositionListenerComponent.cs" />
     <Compile Include="Assets\Generated\Game\Components\GameSelectStarComponent.cs" />
+    <Compile Include="Assets\Generated\Game\Components\GameSelectStarListenerComponent.cs" />
     <Compile Include="Assets\Generated\Game\Components\GameStarComponent.cs" />
     <Compile Include="Assets\Generated\Game\Components\GameViewComponent.cs" />
     <Compile Include="Assets\Generated\Game\GameAttribute.cs" />
@@ -120,6 +124,7 @@
     <Compile Include="Assets\Script\View\StarView.cs" />
     <None Include="Assets\Entitas\LICENSE.txt" />
     <None Include="Assets\Entitas\Entitas.xml" />
+    <None Include="Assets\Resources\Shaders\SelectShader.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/UnityProject/StarPop_Entitas/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

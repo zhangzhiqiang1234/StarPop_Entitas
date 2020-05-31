@@ -8,25 +8,33 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly SelectStarComponent selectStarComponent = new SelectStarComponent();
+    public SelectStarComponent selectStar { get { return (SelectStarComponent)GetComponent(GameComponentsLookup.SelectStar); } }
+    public bool hasSelectStar { get { return HasComponent(GameComponentsLookup.SelectStar); } }
 
-    public bool isSelectStar {
-        get { return HasComponent(GameComponentsLookup.SelectStar); }
-        set {
-            if (value != isSelectStar) {
-                var index = GameComponentsLookup.SelectStar;
-                if (value) {
-                    var componentPool = GetComponentPool(index);
-                    var component = componentPool.Count > 0
-                            ? componentPool.Pop()
-                            : selectStarComponent;
+    public void AddSelectStar(bool newIsSelect, bool newShowUpEdge, bool newShowDownEdge, bool newShowLeftEdge, bool newShowRightEdge) {
+        var index = GameComponentsLookup.SelectStar;
+        var component = (SelectStarComponent)CreateComponent(index, typeof(SelectStarComponent));
+        component.isSelect = newIsSelect;
+        component.showUpEdge = newShowUpEdge;
+        component.showDownEdge = newShowDownEdge;
+        component.showLeftEdge = newShowLeftEdge;
+        component.showRightEdge = newShowRightEdge;
+        AddComponent(index, component);
+    }
 
-                    AddComponent(index, component);
-                } else {
-                    RemoveComponent(index);
-                }
-            }
-        }
+    public void ReplaceSelectStar(bool newIsSelect, bool newShowUpEdge, bool newShowDownEdge, bool newShowLeftEdge, bool newShowRightEdge) {
+        var index = GameComponentsLookup.SelectStar;
+        var component = (SelectStarComponent)CreateComponent(index, typeof(SelectStarComponent));
+        component.isSelect = newIsSelect;
+        component.showUpEdge = newShowUpEdge;
+        component.showDownEdge = newShowDownEdge;
+        component.showLeftEdge = newShowLeftEdge;
+        component.showRightEdge = newShowRightEdge;
+        ReplaceComponent(index, component);
+    }
+
+    public void RemoveSelectStar() {
+        RemoveComponent(GameComponentsLookup.SelectStar);
     }
 }
 
