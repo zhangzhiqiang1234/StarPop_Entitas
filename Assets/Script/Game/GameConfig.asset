@@ -18,5 +18,11 @@ MonoBehaviour:
   - purple
   - red
   - yellow
-  BoardRow: 18
-  BoradCol: 10
+  StarSelectColors:
+  - {r: 0.9725491, g: 0, b: 0.21568629, a: 0}
+  - {r: 0.972549, g: 0, b: 0.21394342, a: 0}
+  - {r: 1, g: 0.27207717, b: 0, a: 0}
+  - {r: 0.24528302, g: 0.85341555, b: 0.9811321, a: 0}
+  - {r: 0.9725491, g: 0, b: 0.21568629, a: 0}
+  BoardRow: 10
+  BoradCol: 8

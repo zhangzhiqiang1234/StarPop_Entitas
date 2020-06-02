@@ -24,7 +24,9 @@ public class SelectStarSystem : ReactiveSystem<GameEntity>
                     List<GameEntity> resultList = _contexts.game.DFSearch(clickEntity.clickStar.row, clickEntity.clickStar.col);
                     foreach (var item in resultList)
                     {
-                        item.ReplaceSelectStar(false,false,false,false,false);
+                        //item.ReplaceSelectStar(false,false,false,false,false);
+                        _contexts.game.ClearData(item.star.rowNum, item.star.colNum);
+                        item.isDestroy = true;
                     }
 
                 }
@@ -33,29 +35,8 @@ public class SelectStarSystem : ReactiveSystem<GameEntity>
                     List<GameEntity> resultList = _contexts.game.DFSearch(clickEntity.clickStar.row, clickEntity.clickStar.col);
                     if (resultList.Count > 1)
                     {
-                        resultList.Sort((e1,e2)=> 
-                        {
-                            if (e1.star.rowNum > e2.star.rowNum)
-                                return 1;
-                            else if (e1.star.rowNum == e2.star.rowNum)
-                                return 0;
-                            else
-                                return -1;
-                        });
-                        int minRow = resultList[0].star.rowNum;
-                        int maxRow = resultList[resultList.Count - 1].star.rowNum;
-
-                        resultList.Sort((e1, e2) =>
-                        {
-                            if (e1.star.colNum > e2.star.colNum)
-                                return 1;
-                            else if (e1.star.colNum == e2.star.colNum)
-                                return 0;
-                            else
-                                return -1;
-                        });
-                        int minCol = resultList[0].star.colNum;
-                        int maxCol = resultList[resultList.Count - 1].star.colNum;
+                        int minRow, maxRow, minCol, maxCol;
+                        _contexts.game.getRangRowAndCol(resultList, out minRow, out maxRow, out minCol, out maxCol);
 
                         Dictionary<string, GameEntity> dicEntity = new Dictionary<string, GameEntity>();
                         foreach (var item in resultList)

@@ -48,15 +48,20 @@ public class StarView : MonoBehaviour, IView, IPositionListener, IDestroyListene
 
     public void OnPosition(GameEntity entity, float x, float y)
     {
-        Debug.Log(string.Format("Change Position {0},{1} ", x, y));
+        if (!entity.isDestroy)
+        {
+            this.transform.localPosition = new Vector3(x, y, this.transform.localPosition.z);
+        }
     }
 
     public void OnSelectStar(GameEntity entity, bool isSelect, bool showUpEdge, bool showDownEdge, bool showLeftEdge, bool showRightEdge)
     {
-        SetSelect(isSelect,showUpEdge,showDownEdge,showLeftEdge,showRightEdge);
+        int starType = entity.star.starType;
+        Color selectColor = Contexts.sharedInstance.game.gameConfig.config.GetSelectColor(starType);
+        SetSelect(isSelect,showUpEdge,showDownEdge,showLeftEdge,showRightEdge,selectColor);
     }
 
-    private void SetSelect(bool isSelect, bool showUpEdge, bool showDownEdge, bool showLeftEdge, bool showRightEdge)
+    private void SetSelect(bool isSelect, bool showUpEdge, bool showDownEdge, bool showLeftEdge, bool showRightEdge,Color color)
     {
         Material material = gameObject.GetComponent<SpriteRenderer>().material;
         if (!isSelect)
@@ -70,5 +75,6 @@ public class StarView : MonoBehaviour, IView, IPositionListener, IDestroyListene
         material.SetFloat("_ShowDownEdge", showDownEdge ? 1 : 0);
         material.SetFloat("_ShowLeftEdge", showLeftEdge ? 1 : 0);
         material.SetFloat("_ShowRightEdge", showRightEdge ? 1 : 0);
+        material.SetColor("_EdgeColor", color);
     }
 }

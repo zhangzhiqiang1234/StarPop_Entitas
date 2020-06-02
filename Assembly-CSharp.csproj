@@ -116,6 +116,7 @@
     <Compile Include="Assets\Script\Game\ScriptableGameConfig.cs" />
     <Compile Include="Assets\Script\System\AddViewSystem.cs" />
     <Compile Include="Assets\Script\System\BoardSystem.cs" />
+    <Compile Include="Assets\Script\System\DestroyStarsSystem.cs" />
     <Compile Include="Assets\Script\System\GameCleanUpSystem.cs" />
     <Compile Include="Assets\Script\System\InputSystem.cs" />
     <Compile Include="Assets\Script\System\SelectStarSystem.cs" />

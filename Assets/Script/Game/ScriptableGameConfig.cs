@@ -8,6 +8,7 @@ public interface IGameConfig
     int GetRandomStarType();
     int GetBoardRow();
     int GetBoardCol();
+    Color GetSelectColor(int starType);
 }
 
 [CreateAssetMenu(menuName = "StarPop/Game Config")]
@@ -15,6 +16,8 @@ public class ScriptableGameConfig : ScriptableObject, IGameConfig
 {
     [SerializeField]
     private List<string> StarNames = new List<string>();
+    [SerializeField]
+    private List<Color> StarSelectColors = new List<Color>();
     [Range(4,18)]
     public int BoardRow;
     [Range(4,10)]
@@ -26,7 +29,7 @@ public class ScriptableGameConfig : ScriptableObject, IGameConfig
 
     public int GetRandomStarType()
     {
-        return Random.Range(1, StarNames.Count);
+        return Random.Range(1, StarNames.Count+1);
     }
 
     public int GetBoardRow()
@@ -37,5 +40,10 @@ public class ScriptableGameConfig : ScriptableObject, IGameConfig
     public int GetBoardCol()
     {
         return this.BoradCol;
+    }
+
+    public Color GetSelectColor(int starType)
+    {
+        return StarSelectColors[starType - 1];
     }
 }

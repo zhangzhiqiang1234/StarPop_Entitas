@@ -62,6 +62,38 @@ public partial class GameContext
         }
     }
 
+    public int getStarType(int row, int col)
+    {
+        if (isCorrectRow(row) && isCorrectCol(col))
+        {
+            return _boardDatas[row, col];
+        }
+        return -1;
+    }
+
+    public GameEntity getStarEntity(int row, int col)
+    {
+        if (isCorrectRow(row) && isCorrectCol(col))
+        {
+            return _boardEntityDic[getIndexKey(row, col)];
+        }
+        return null;
+    }
+
+    public void swapStar(int row1,int col1,int row2,int col2)
+    {
+        if (isCorrectRow(row1) && isCorrectCol(col1)&&isCorrectRow(row2) && isCorrectCol(col2))
+        {
+            int temp = _boardDatas[row1, col1];
+            _boardDatas[row1, col1] = _boardDatas[row2, col2];
+            _boardDatas[row2, col2] = temp;
+
+            GameEntity tempEntity = _boardEntityDic[getIndexKey(row1, col1)];
+            _boardEntityDic[getIndexKey(row1, col1)] = _boardEntityDic[getIndexKey(row2, col2)];
+            _boardEntityDic[getIndexKey(row2, col2)] = tempEntity;
+        }
+    }
+
     /// <summary>
     /// 广度优先遍历
     /// </summary>
@@ -188,5 +220,33 @@ public partial class GameContext
     public string getIndexKey(int row,int col)
     {
         return string.Format("{0}_{1}", row, col);
+    }
+
+    public void getRangRowAndCol(List<GameEntity> entities,out int minRow,out int maxRow,out int minCol,out int maxCol)
+    {
+
+        entities.Sort((e1, e2) =>
+        {
+            if (e1.star.rowNum > e2.star.rowNum)
+                return 1;
+            else if (e1.star.rowNum == e2.star.rowNum)
+                return 0;
+            else
+                return -1;
+        });
+        minRow = entities[0].star.rowNum;
+        maxRow = entities[entities.Count - 1].star.rowNum;
+
+        entities.Sort((e1, e2) =>
+        {
+            if (e1.star.colNum > e2.star.colNum)
+                return 1;
+            else if (e1.star.colNum == e2.star.colNum)
+                return 0;
+            else
+                return -1;
+        });
+        minCol = entities[0].star.colNum;
+        maxCol = entities[entities.Count - 1].star.colNum;
     }
 }

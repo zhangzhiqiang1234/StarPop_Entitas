@@ -13,6 +13,8 @@ public class GameSystem : Feature
 
         Add(new SelectStarSystem(contexts));
 
+        Add(new DestroyStarsSystem(contexts));
+
         Add(new GameEventSystems(contexts));
 
         Add(new GameCleanUpSystem(contexts));
