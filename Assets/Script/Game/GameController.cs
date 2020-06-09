@@ -9,7 +9,14 @@ public class GameController
     public GameController(IGameConfig gameConfig)
     {
         _systems = new GameSystem(Contexts.sharedInstance);
+
+        gameConfig.LoadLevelData("LevelData/LevelData");
         Contexts.sharedInstance.game.SetGameConfig(gameConfig);
+
+        GameEntity entity = Contexts.sharedInstance.game.CreateEntity();
+        entity.AddLoadLevel(1);
+        entity.isDestroy = true;
+
     }
 
     /// <summary>

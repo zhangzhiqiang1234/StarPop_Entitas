@@ -12,11 +12,12 @@ public class GameSystem : Feature
         Add(new InputSystem(contexts));
 
         Add(new SelectStarSystem(contexts));
-
         Add(new DestroyStarsSystem(contexts));
+        Add(new GainScoreSystem(contexts));
 
         Add(new GameEventSystems(contexts));
 
+        Add(new OneFrameEventSystem(contexts));
         Add(new GameCleanUpSystem(contexts));
 
 

@@ -209,12 +209,12 @@ public partial class GameContext
 
     private bool isCorrectRow(int row)
     {
-        return (row >= 0 && row < gameConfig.config.GetBoardRow());
+        return (row >= 0 && row < levelInfo.boardRow);
     }
 
     private bool isCorrectCol(int col)
     {
-        return (col >= 0 && col < gameConfig.config.GetBoardCol());
+        return (col >= 0 && col < levelInfo.boardCol);
     }
 
     public string getIndexKey(int row,int col)

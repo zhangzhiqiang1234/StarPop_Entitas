@@ -77,7 +77,10 @@
     <Compile Include="Assets\Generated\Game\Components\GameClickStarComponent.cs" />
     <Compile Include="Assets\Generated\Game\Components\GameDestroyComponent.cs" />
     <Compile Include="Assets\Generated\Game\Components\GameDestroyListenerComponent.cs" />
+    <Compile Include="Assets\Generated\Game\Components\GameGainScoreComponent.cs" />
     <Compile Include="Assets\Generated\Game\Components\GameGameConfigComponent.cs" />
+    <Compile Include="Assets\Generated\Game\Components\GameLevelInfoComponent.cs" />
+    <Compile Include="Assets\Generated\Game\Components\GameLoadLevelComponent.cs" />
     <Compile Include="Assets\Generated\Game\Components\GamePositionComponent.cs" />
     <Compile Include="Assets\Generated\Game\Components\GamePositionListenerComponent.cs" />
     <Compile Include="Assets\Generated\Game\Components\GameSelectStarComponent.cs" />
@@ -102,13 +105,19 @@
     <Compile Include="Assets\Script\Component\AssetComponent.cs" />
     <Compile Include="Assets\Script\Component\ClickStarComponent.cs" />
     <Compile Include="Assets\Script\Component\DestroyComponent.cs" />
+    <Compile Include="Assets\Script\Component\GainScoreComponent.cs" />
     <Compile Include="Assets\Script\Component\GameConfigComponent.cs" />
+    <Compile Include="Assets\Script\Component\LevelInfoComponent.cs" />
+    <Compile Include="Assets\Script\Component\LoadLevelComponent.cs" />
     <Compile Include="Assets\Script\Component\PositionComponent.cs" />
     <Compile Include="Assets\Script\Component\SelectStarComponent.cs" />
     <Compile Include="Assets\Script\Component\StarComponent.cs" />
     <Compile Include="Assets\Script\Component\ViewComponent.cs" />
     <Compile Include="Assets\Script\Event\EventDispatcher.cs" />
     <Compile Include="Assets\Script\Event\EventEnum.cs" />
+    <Compile Include="Assets\Script\Game\Data\LevelData.cs" />
+    <Compile Include="Assets\Script\Game\Effect\PostEffectsBase.cs" />
+    <Compile Include="Assets\Script\Game\Effect\waterWaveEffect.cs" />
     <Compile Include="Assets\Script\Game\GameContextExtensions.cs" />
     <Compile Include="Assets\Script\Game\GameController.cs" />
     <Compile Include="Assets\Script\Game\GameControllerBehaviour.cs" />
@@ -117,8 +126,10 @@
     <Compile Include="Assets\Script\System\AddViewSystem.cs" />
     <Compile Include="Assets\Script\System\BoardSystem.cs" />
     <Compile Include="Assets\Script\System\DestroyStarsSystem.cs" />
+    <Compile Include="Assets\Script\System\GainScoreSystem.cs" />
     <Compile Include="Assets\Script\System\GameCleanUpSystem.cs" />
     <Compile Include="Assets\Script\System\InputSystem.cs" />
+    <Compile Include="Assets\Script\System\OneFrameEvemtSystem.cs" />
     <Compile Include="Assets\Script\System\SelectStarSystem.cs" />
     <Compile Include="Assets\Script\View\BoardViewBehaviour.cs" />
     <Compile Include="Assets\Script\View\IView.cs" />
@@ -126,6 +137,7 @@
     <None Include="Assets\Entitas\LICENSE.txt" />
     <None Include="Assets\Entitas\Entitas.xml" />
     <None Include="Assets\Resources\Shaders\SelectShader.shader" />
+    <None Include="Assets\Resources\Shaders\waterWaveShader.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/UnityProject/StarPop_Entitas/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -365,6 +377,9 @@
     </Reference>
     <Reference Include="Entitas.VisualDebugging.Unity">
       <HintPath>D:/UnityProject/StarPop_Entitas/Assets/Entitas/Entitas.VisualDebugging.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>D:/UnityProject/StarPop_Entitas/Assets/Plugins/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>D:/UnityProject/StarPop_Entitas/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>

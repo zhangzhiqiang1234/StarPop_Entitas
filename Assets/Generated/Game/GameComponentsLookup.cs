@@ -12,22 +12,28 @@ public static class GameComponentsLookup {
     public const int ClickStar = 1;
     public const int Destroy = 2;
     public const int DestroyListener = 3;
-    public const int GameConfig = 4;
-    public const int Position = 5;
-    public const int PositionListener = 6;
-    public const int SelectStar = 7;
-    public const int SelectStarListener = 8;
-    public const int Star = 9;
-    public const int View = 10;
+    public const int GainScore = 4;
+    public const int GameConfig = 5;
+    public const int LevelInfo = 6;
+    public const int LoadLevel = 7;
+    public const int Position = 8;
+    public const int PositionListener = 9;
+    public const int SelectStar = 10;
+    public const int SelectStarListener = 11;
+    public const int Star = 12;
+    public const int View = 13;
 
-    public const int TotalComponents = 11;
+    public const int TotalComponents = 14;
 
     public static readonly string[] componentNames = {
         "Asset",
         "ClickStar",
         "Destroy",
         "DestroyListener",
+        "GainScore",
         "GameConfig",
+        "LevelInfo",
+        "LoadLevel",
         "Position",
         "PositionListener",
         "SelectStar",
@@ -41,7 +47,10 @@ public static class GameComponentsLookup {
         typeof(ClickStarComponent),
         typeof(DestroyComponent),
         typeof(DestroyListenerComponent),
+        typeof(GainScoreComponent),
         typeof(GameConfigComponent),
+        typeof(LevelInfoComponent),
+        typeof(LoadLevelComponent),
         typeof(PositionComponent),
         typeof(PositionListenerComponent),
         typeof(SelectStarComponent),

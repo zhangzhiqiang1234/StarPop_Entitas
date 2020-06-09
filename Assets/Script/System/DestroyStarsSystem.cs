@@ -13,8 +13,8 @@ public class DestroyStarsSystem : ReactiveSystem<GameEntity>
     {
         int minRow, maxRow, minCol, maxCol;
         _gameContext.getRangRowAndCol(entities, out minRow, out maxRow, out minCol, out maxCol);
-        maxRow = _gameContext.gameConfig.config.GetBoardRow();
-        maxCol = _gameContext.gameConfig.config.GetBoardCol();
+        maxRow = _gameContext.levelInfo.boardRow;
+        maxCol = _gameContext.levelInfo.boardCol;
         int downStep = 0;
         int leftStep = 0;
         bool isEmptyCol = false;
@@ -40,9 +40,6 @@ public class DestroyStarsSystem : ReactiveSystem<GameEntity>
                         entity.ReplaceStar(entity.star.starType,newRow,newCol);
                         entity.ReplacePosition(_gameContext.GetStartPosX() + newCol, _gameContext.GetStartPosY() + newRow);
                     }
-
-                    //添加移动组件
-                    //---todo
                 }
                 else
                 {
@@ -54,6 +51,8 @@ public class DestroyStarsSystem : ReactiveSystem<GameEntity>
                 leftStep++;
             }
         }
+
+        _gameContext.CreateEntity().AddGainScore(entities.Count);
     }
 
     protected override bool Filter(GameEntity entity)

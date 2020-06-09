@@ -4,9 +4,11 @@ using Entitas;
 public class SelectStarSystem : ReactiveSystem<GameEntity>
 {
     Contexts _contexts;
+    Group<GameEntity> _selectStarGroup;
     public SelectStarSystem(Contexts contexts) : base(contexts.game)
     {
         _contexts = contexts;
+        _selectStarGroup = (Group<GameEntity>)_contexts.game.GetGroup(GameMatcher.SelectStar);
     }
 
     protected override void Execute(List<GameEntity> entities)
@@ -35,6 +37,13 @@ public class SelectStarSystem : ReactiveSystem<GameEntity>
                     List<GameEntity> resultList = _contexts.game.DFSearch(clickEntity.clickStar.row, clickEntity.clickStar.col);
                     if (resultList.Count > 1)
                     {
+                        //将之前选择的删除
+                        GameEntity[] selectList = _selectStarGroup.GetEntities();
+                        for (int i = 0; i < selectList.Length; i++)
+                        {
+                            selectList[i].ReplaceSelectStar(false, false, false, false, false);
+                        }
+
                         int minRow, maxRow, minCol, maxCol;
                         _contexts.game.getRangRowAndCol(resultList, out minRow, out maxRow, out minCol, out maxCol);
 
