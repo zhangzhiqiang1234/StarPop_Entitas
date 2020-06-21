@@ -109,7 +109,6 @@ public class SelectStarSystem : ReactiveSystem<GameEntity>
                     }
                 }
             }
-            clickEntity.isDestroy = true;
         }
     }
 

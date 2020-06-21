@@ -8,7 +8,13 @@ public class GameControllerBehaviour : MonoBehaviour
     private GameController _gameController;
     void Awake()
     {
-        _gameController = new GameController(gameConfig);
+        DrivesEntry drives = new DrivesEntry(
+            new UnityTimeDrive(),
+            new UnityLogDrive(),
+            //new FileLogDrive(),
+            new UnityInputDrive());
+
+        _gameController = new GameController(gameConfig, drives);
     }
 
     // Start is called before the first frame update

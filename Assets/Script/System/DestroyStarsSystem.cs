@@ -52,7 +52,8 @@ public class DestroyStarsSystem : ReactiveSystem<GameEntity>
             }
         }
 
-        _gameContext.CreateEntity().AddGainScore(entities.Count);
+         _gameContext.CreateEntity().AddGainScore(entities.Count);
+        _gameContext.CreateEntity().isCheckEnd = true;
     }
 
     protected override bool Filter(GameEntity entity)

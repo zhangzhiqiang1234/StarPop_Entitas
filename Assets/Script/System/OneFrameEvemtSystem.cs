@@ -18,12 +18,12 @@ public class OneFrameEventSystem : ReactiveSystem<GameEntity>
 
     protected override bool Filter(GameEntity entity)
     {
-        return entity.hasClickStar || entity.hasGainScore;
+        return entity.hasClickStar || entity.hasGainScore || entity.isCheckEnd;
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
     {
-        int[] allof = { GameComponentsLookup.ClickStar,GameComponentsLookup.GainScore};
-        return context.CreateCollector<GameEntity>(GameMatcher.AllOf(allof));
+        int[] allof = { GameComponentsLookup.ClickStar,GameComponentsLookup.GainScore,GameComponentsLookup.CheckEnd};
+        return context.CreateCollector<GameEntity>(GameMatcher.AnyOf(allof));
     }
 }

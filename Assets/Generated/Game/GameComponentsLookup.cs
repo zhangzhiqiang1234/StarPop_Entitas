@@ -9,24 +9,28 @@
 public static class GameComponentsLookup {
 
     public const int Asset = 0;
-    public const int ClickStar = 1;
-    public const int Destroy = 2;
-    public const int DestroyListener = 3;
-    public const int GainScore = 4;
-    public const int GameConfig = 5;
-    public const int LevelInfo = 6;
-    public const int LoadLevel = 7;
-    public const int Position = 8;
-    public const int PositionListener = 9;
-    public const int SelectStar = 10;
-    public const int SelectStarListener = 11;
-    public const int Star = 12;
-    public const int View = 13;
+    public const int CheckEnd = 1;
+    public const int ClickStar = 2;
+    public const int Destroy = 3;
+    public const int DestroyListener = 4;
+    public const int GainScore = 5;
+    public const int GameConfig = 6;
+    public const int LevelInfo = 7;
+    public const int LoadLevel = 8;
+    public const int Log = 9;
+    public const int Position = 10;
+    public const int PositionListener = 11;
+    public const int SelectStar = 12;
+    public const int SelectStarListener = 13;
+    public const int Star = 14;
+    public const int Time = 15;
+    public const int View = 16;
 
-    public const int TotalComponents = 14;
+    public const int TotalComponents = 17;
 
     public static readonly string[] componentNames = {
         "Asset",
+        "CheckEnd",
         "ClickStar",
         "Destroy",
         "DestroyListener",
@@ -34,16 +38,19 @@ public static class GameComponentsLookup {
         "GameConfig",
         "LevelInfo",
         "LoadLevel",
+        "Log",
         "Position",
         "PositionListener",
         "SelectStar",
         "SelectStarListener",
         "Star",
+        "Time",
         "View"
     };
 
     public static readonly System.Type[] componentTypes = {
         typeof(AssetComponent),
+        typeof(CheckEndComponent),
         typeof(ClickStarComponent),
         typeof(DestroyComponent),
         typeof(DestroyListenerComponent),
@@ -51,11 +58,13 @@ public static class GameComponentsLookup {
         typeof(GameConfigComponent),
         typeof(LevelInfoComponent),
         typeof(LoadLevelComponent),
+        typeof(LogComponent),
         typeof(PositionComponent),
         typeof(PositionListenerComponent),
         typeof(SelectStarComponent),
         typeof(SelectStarListenerComponent),
         typeof(StarComponent),
+        typeof(TimeComponent),
         typeof(ViewComponent)
     };
 }

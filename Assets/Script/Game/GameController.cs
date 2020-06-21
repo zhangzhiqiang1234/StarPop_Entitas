@@ -6,9 +6,9 @@
 public class GameController
 {
     Systems _systems;
-    public GameController(IGameConfig gameConfig)
+    public GameController(IGameConfig gameConfig,DrivesEntry drives)
     {
-        _systems = new GameSystem(Contexts.sharedInstance);
+        _systems = new GameSystem(Contexts.sharedInstance, drives);
 
         gameConfig.LoadLevelData("LevelData/LevelData");
         Contexts.sharedInstance.game.SetGameConfig(gameConfig);

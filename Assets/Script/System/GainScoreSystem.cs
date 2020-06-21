@@ -7,6 +7,7 @@ public class GainScoreSystem : ReactiveSystem<GameEntity>
     Contexts _contexts;
     public GainScoreSystem(Contexts contexts) : base(contexts.game)
     {
+
         _contexts = contexts;
     }
 

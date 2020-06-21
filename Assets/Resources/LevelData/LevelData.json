@@ -2,8 +2,8 @@
 	"Datas" : [
 		{
 			"LevelId": 1,
-			"Row": 8,
-			"Col": 8,
+			"Row": 4,
+			"Col": 4,
 			"TargetScore": 1000
 		},
 		{
