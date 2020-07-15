@@ -7,12 +7,15 @@ public partial class GameContext
     private Dictionary<string,GameEntity> _boardEntityDic = new Dictionary<string,GameEntity>();
     private float startPosX;
     private float startPosY;
+    private int currentStarNum;
+
     public EventDispatcher eventDispatcher = new EventDispatcher();
 
     public void InitBoradDatas(int row,int col)
     {
         _boardDatas = new int[row, col];
         _boardEntityDic.Clear();
+        currentStarNum = row * col;
         startPosX = (float)(-(col - 1) / 2.0);
         startPosY = (float)(-(row - 1) / 2.0);
         for (int i = 0; i < row; i++)
@@ -59,6 +62,7 @@ public partial class GameContext
         {
             _boardDatas[row, col] = -1;
             _boardEntityDic[getIndexKey(row, col)] = null;
+            currentStarNum--;
         }
     }
 
@@ -220,6 +224,11 @@ public partial class GameContext
     public string getIndexKey(int row,int col)
     {
         return string.Format("{0}_{1}", row, col);
+    }
+
+    public int getStarNum()
+    {
+        return currentStarNum;
     }
 
     public void getRangRowAndCol(List<GameEntity> entities,out int minRow,out int maxRow,out int minCol,out int maxCol)

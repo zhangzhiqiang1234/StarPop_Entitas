@@ -67,4 +67,14 @@ public class MVector3D
     {
         return new Vector2(x, y);
     }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
+
+    public override bool Equals(object obj)
+    {
+        return base.Equals(obj);
+    }
 }

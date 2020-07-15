@@ -15,7 +15,7 @@ public class GameController
 
         GameEntity entity = Contexts.sharedInstance.game.CreateEntity();
         entity.AddLoadLevel(1);
-        entity.isDestroy = true;
+        //entity.isDestroy = true;
 
     }
 

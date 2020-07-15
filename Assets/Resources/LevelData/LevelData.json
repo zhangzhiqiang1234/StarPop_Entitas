@@ -2,32 +2,42 @@
 	"Datas" : [
 		{
 			"LevelId": 1,
-			"Row": 4,
-			"Col": 4,
+			"Row": 12,
+			"Col": 10,
+			"EndTotalScore" : 500,
+			"EndPreScore" : 50,
 			"TargetScore": 1000
 		},
 		{
 			"LevelId": 2,
 			"Row": 8,
 			"Col": 8,
+			"EndTotalScore" : 500,
+			"EndPreScore" : 50,
 			"TargetScore": 2500
 		},
 		{
 			"LevelId": 3,
 			"Row": 8,
 			"Col": 8,
+			"EndTotalScore" : 500,
+			"EndPreScore" : 40,
 			"TargetScore": 5000
 		},
 		{
 			"LevelId": 4,
 			"Row": 10,
 			"Col": 10,
+			"EndTotalScore" : 500,
+			"EndPreScore" : 30,
 			"TargetScore": 8000
 		},
 		{
 			"LevelId": 5,
-			"Row": 10,
-			"Col": 12,
+			"Row": 12,
+			"Col": 10,
+			"EndTotalScore" : 500,
+			"EndPreScore" : 25,
 			"TargetScore": 12000
 		}
 	]

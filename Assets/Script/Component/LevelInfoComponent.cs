@@ -8,5 +8,7 @@ public class LevelInfoComponent : IComponent
     public int boardRow;
     public int boardCol;
     public int curScore;
+    public int endTotalScore;
+    public int endPreScore;
     public int targetScore;
 }

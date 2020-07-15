@@ -31,7 +31,7 @@ public class GainScoreSystem : ReactiveSystem<GameEntity>
             }
 
             LevelInfoComponent levelInfo = _contexts.game.levelInfo;
-            _contexts.game.ReplaceLevelInfo(levelInfo.curLevelId, levelInfo.boardRow, levelInfo.boardCol, levelInfo.curScore + score, levelInfo.targetScore);
+            _contexts.game.ReplaceLevelInfo(levelInfo.curLevelId, levelInfo.boardRow, levelInfo.boardCol, levelInfo.curScore + score, levelInfo.endTotalScore, levelInfo.endPreScore, levelInfo.targetScore);
 
             //更新UI
 

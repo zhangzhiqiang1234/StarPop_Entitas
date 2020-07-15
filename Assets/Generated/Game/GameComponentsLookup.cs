@@ -9,27 +9,30 @@
 public static class GameComponentsLookup {
 
     public const int Asset = 0;
-    public const int CheckEnd = 1;
-    public const int ClickStar = 2;
-    public const int Destroy = 3;
-    public const int DestroyListener = 4;
-    public const int GainScore = 5;
-    public const int GameConfig = 6;
-    public const int LevelInfo = 7;
-    public const int LoadLevel = 8;
-    public const int Log = 9;
-    public const int Position = 10;
-    public const int PositionListener = 11;
-    public const int SelectStar = 12;
-    public const int SelectStarListener = 13;
-    public const int Star = 14;
-    public const int Time = 15;
-    public const int View = 16;
+    public const int ChangeLevel = 1;
+    public const int CheckEnd = 2;
+    public const int ClickStar = 3;
+    public const int Destroy = 4;
+    public const int DestroyListener = 5;
+    public const int GainScore = 6;
+    public const int GameConfig = 7;
+    public const int LevelInfo = 8;
+    public const int LoadLevel = 9;
+    public const int Log = 10;
+    public const int Position = 11;
+    public const int PositionListener = 12;
+    public const int SelectStar = 13;
+    public const int SelectStarListener = 14;
+    public const int Settlement = 15;
+    public const int Star = 16;
+    public const int Time = 17;
+    public const int View = 18;
 
-    public const int TotalComponents = 17;
+    public const int TotalComponents = 19;
 
     public static readonly string[] componentNames = {
         "Asset",
+        "ChangeLevel",
         "CheckEnd",
         "ClickStar",
         "Destroy",
@@ -43,6 +46,7 @@ public static class GameComponentsLookup {
         "PositionListener",
         "SelectStar",
         "SelectStarListener",
+        "Settlement",
         "Star",
         "Time",
         "View"
@@ -50,6 +54,7 @@ public static class GameComponentsLookup {
 
     public static readonly System.Type[] componentTypes = {
         typeof(AssetComponent),
+        typeof(ChangeLevelComponent),
         typeof(CheckEndComponent),
         typeof(ClickStarComponent),
         typeof(DestroyComponent),
@@ -63,6 +68,7 @@ public static class GameComponentsLookup {
         typeof(PositionListenerComponent),
         typeof(SelectStarComponent),
         typeof(SelectStarListenerComponent),
+        typeof(SettlementComponent),
         typeof(StarComponent),
         typeof(TimeComponent),
         typeof(ViewComponent)

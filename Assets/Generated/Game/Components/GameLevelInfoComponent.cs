@@ -12,22 +12,22 @@ public partial class GameContext {
     public LevelInfoComponent levelInfo { get { return levelInfoEntity.levelInfo; } }
     public bool hasLevelInfo { get { return levelInfoEntity != null; } }
 
-    public GameEntity SetLevelInfo(int newCurLevelId, int newBoardRow, int newBoardCol, int newCurScore, int newTargetScore) {
+    public GameEntity SetLevelInfo(int newCurLevelId, int newBoardRow, int newBoardCol, int newCurScore, int newEndTotalScore, int newEndPreScore, int newTargetScore) {
         if (hasLevelInfo) {
             throw new Entitas.EntitasException("Could not set LevelInfo!\n" + this + " already has an entity with LevelInfoComponent!",
                 "You should check if the context already has a levelInfoEntity before setting it or use context.ReplaceLevelInfo().");
         }
         var entity = CreateEntity();
-        entity.AddLevelInfo(newCurLevelId, newBoardRow, newBoardCol, newCurScore, newTargetScore);
+        entity.AddLevelInfo(newCurLevelId, newBoardRow, newBoardCol, newCurScore, newEndTotalScore, newEndPreScore, newTargetScore);
         return entity;
     }
 
-    public void ReplaceLevelInfo(int newCurLevelId, int newBoardRow, int newBoardCol, int newCurScore, int newTargetScore) {
+    public void ReplaceLevelInfo(int newCurLevelId, int newBoardRow, int newBoardCol, int newCurScore, int newEndTotalScore, int newEndPreScore, int newTargetScore) {
         var entity = levelInfoEntity;
         if (entity == null) {
-            entity = SetLevelInfo(newCurLevelId, newBoardRow, newBoardCol, newCurScore, newTargetScore);
+            entity = SetLevelInfo(newCurLevelId, newBoardRow, newBoardCol, newCurScore, newEndTotalScore, newEndPreScore, newTargetScore);
         } else {
-            entity.ReplaceLevelInfo(newCurLevelId, newBoardRow, newBoardCol, newCurScore, newTargetScore);
+            entity.ReplaceLevelInfo(newCurLevelId, newBoardRow, newBoardCol, newCurScore, newEndTotalScore, newEndPreScore, newTargetScore);
         }
     }
 
@@ -49,24 +49,28 @@ public partial class GameEntity {
     public LevelInfoComponent levelInfo { get { return (LevelInfoComponent)GetComponent(GameComponentsLookup.LevelInfo); } }
     public bool hasLevelInfo { get { return HasComponent(GameComponentsLookup.LevelInfo); } }
 
-    public void AddLevelInfo(int newCurLevelId, int newBoardRow, int newBoardCol, int newCurScore, int newTargetScore) {
+    public void AddLevelInfo(int newCurLevelId, int newBoardRow, int newBoardCol, int newCurScore, int newEndTotalScore, int newEndPreScore, int newTargetScore) {
         var index = GameComponentsLookup.LevelInfo;
         var component = (LevelInfoComponent)CreateComponent(index, typeof(LevelInfoComponent));
         component.curLevelId = newCurLevelId;
         component.boardRow = newBoardRow;
         component.boardCol = newBoardCol;
         component.curScore = newCurScore;
+        component.endTotalScore = newEndTotalScore;
+        component.endPreScore = newEndPreScore;
         component.targetScore = newTargetScore;
         AddComponent(index, component);
     }
 
-    public void ReplaceLevelInfo(int newCurLevelId, int newBoardRow, int newBoardCol, int newCurScore, int newTargetScore) {
+    public void ReplaceLevelInfo(int newCurLevelId, int newBoardRow, int newBoardCol, int newCurScore, int newEndTotalScore, int newEndPreScore, int newTargetScore) {
         var index = GameComponentsLookup.LevelInfo;
         var component = (LevelInfoComponent)CreateComponent(index, typeof(LevelInfoComponent));
         component.curLevelId = newCurLevelId;
         component.boardRow = newBoardRow;
         component.boardCol = newBoardCol;
         component.curScore = newCurScore;
+        component.endTotalScore = newEndTotalScore;
+        component.endPreScore = newEndPreScore;
         component.targetScore = newTargetScore;
         ReplaceComponent(index, component);
     }

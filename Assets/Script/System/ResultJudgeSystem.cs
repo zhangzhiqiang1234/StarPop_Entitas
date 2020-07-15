@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Entitas;
 
-public class ResultJudgeSystem : ReactiveSystem<GameEntity>
+public class ResultJudgeSystem : ReactiveSystem<GameEntity>,IExecuteSystem
 {
     Contexts _contexts;
     public ResultJudgeSystem(Contexts contexts) : base(contexts.game)
@@ -27,7 +27,7 @@ public class ResultJudgeSystem : ReactiveSystem<GameEntity>
                         if (row == 0)
                         {
                             //没有可以消除的星星了
-
+                            EnterSettlement();
                             return;
                         }
                         break;
@@ -51,7 +51,13 @@ public class ResultJudgeSystem : ReactiveSystem<GameEntity>
         }
 
         //没有消除的了，延时1S，进入结算阶段
-        bool a = _contexts.game.hasLevelInfo;
+        EnterSettlement();
+    }
+
+    private void EnterSettlement()
+    {
+        GameEntity settlementEntity = _contexts.game.CreateEntity();
+        settlementEntity.AddSettlement(1);
     }
 
     protected override bool Filter(GameEntity entity)

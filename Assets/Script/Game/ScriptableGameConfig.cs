@@ -12,6 +12,7 @@ public interface IGameConfig
 
     void LoadLevelData(string filename);
     LevelData GetLevelData(int levelId);
+    int GetLevelTotalNum();
 
 }
 
@@ -66,5 +67,10 @@ public class ScriptableGameConfig : ScriptableObject, IGameConfig
     public LevelData GetLevelData(int levelId)
     {
        return Dic_LevelDatas[levelId];
+    }
+
+    public int GetLevelTotalNum()
+    {
+        return Dic_LevelDatas.Count;
     }
 }

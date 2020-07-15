@@ -19,14 +19,20 @@ public class BoardSystem : ReactiveSystem<GameEntity>
     {
         foreach (var e in entities)
         {
+            e.isDestroy = true;
             int levelId = e.loadLevel.levelId;
             LevelData data = _gameContext.gameConfig.config.GetLevelData(levelId);
             if (data != null)
             {
                 _gameContext.InitBoradDatas(data.GetRow(),data.GetCol());
-                _gameContext.ReplaceLevelInfo(data.GetLevelId(), data.GetRow(), data.GetCol(), 0, data.GetTargetScore());
+                int currentScore = 0;
+                if (_gameContext.hasLevelInfo && levelId != 1)
+                {
+                    currentScore = _gameContext.levelInfo.curScore;
+                }
+                _gameContext.ReplaceLevelInfo(data.GetLevelId(), data.GetRow(), data.GetCol(), currentScore, data.GetEndTotalScore(),data.GetEndPreScore(),data.GetTargetScore());
 
-                break;
+                return;
             }
 
         }

@@ -6,11 +6,9 @@ using UnityEngine;
 
 public class StarView : MonoBehaviour, IView, IPositionListener, IDestroyListener, ISelectStarListener
 {
-    GameEntity gameEntity;
-
     public void Link(IEntity entity)
     {
-        gameEntity = entity as GameEntity;
+        GameEntity gameEntity = entity as GameEntity;
         gameObject.Link(gameEntity);
 
         gameEntity.AddPositionListener(this);

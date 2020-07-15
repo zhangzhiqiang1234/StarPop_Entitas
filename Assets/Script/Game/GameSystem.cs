@@ -18,6 +18,8 @@ public class GameSystem : Feature
         Add(new DestroyStarsSystem(contexts));
         Add(new GainScoreSystem(contexts));
         Add(new ResultJudgeSystem(contexts));
+        Add(new SettlementSystem(contexts));
+        Add(new ChangeLevelSystem(contexts));
 
         Add(new GameEventSystems(contexts));
 
