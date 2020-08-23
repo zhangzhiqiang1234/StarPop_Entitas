@@ -9,8 +9,6 @@ public partial class GameContext
     private float startPosY;
     private int currentStarNum;
 
-    public EventDispatcher eventDispatcher = new EventDispatcher();
-
     public void InitBoradDatas(int row,int col)
     {
         _boardDatas = new int[row, col];

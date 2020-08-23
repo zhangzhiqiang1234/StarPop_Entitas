@@ -6,6 +6,7 @@
 public class GameController
 {
     Systems _systems;
+    EventReciveCenter reciveCenter;
     public GameController(IGameConfig gameConfig,DrivesEntry drives)
     {
         _systems = new GameSystem(Contexts.sharedInstance, drives);
@@ -16,6 +17,8 @@ public class GameController
         GameEntity entity = Contexts.sharedInstance.game.CreateEntity();
         entity.AddLoadLevel(1);
         //entity.isDestroy = true;
+
+        reciveCenter = new EventReciveCenter(Contexts.sharedInstance);
 
     }
 

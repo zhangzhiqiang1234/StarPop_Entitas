@@ -32,6 +32,11 @@ public class EventDispatcher
         _events[eventName] = (CallBack)_events[eventName] + callBack;
     }
 
+    internal void addEventListener<T1, T2, T3>(EventEnum fightUI_Update_LevelInfo, Action<LevelData, T3> updateInfo)
+    {
+        throw new NotImplementedException();
+    }
+
     public void addEventListener<T>(EventEnum eventName, CallBack<T> callBack)
     {
         checkAddListener(eventName, callBack);

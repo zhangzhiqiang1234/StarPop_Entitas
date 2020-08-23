@@ -1,0 +1,14 @@
+{
+	"Datas" : [
+		{
+			"uiType": 1,
+			"uiLayer": 1,
+			"prefabPath": "UIPrefabs/FightView"
+		},
+		{
+			"uiType": 2,
+			"uiLayer": 2,
+			"prefabPath": "UIPrefabs/ChangeLevelView"
+		}
+	]
+}

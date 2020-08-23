@@ -18,23 +18,26 @@ public class ChangeLevelSystem : ReactiveSystem<GameEntity>
         foreach (var item in entities)
         {
             clearStarEntity();
-            loadNextLevel();
+            loadNextLevel(item.changeLevel.isExit);
             item.isDestroy = true;
             break;
         }
     }
 
-    private void loadNextLevel()
+    private void loadNextLevel(bool isExit)
     {
         //逻辑下一关
         GameEntity entity = _contexts.game.CreateEntity();
         int levelId = 1;
-        if (_contexts.game.levelInfo.curScore >= _contexts.game.levelInfo.targetScore)
+        if (!isExit)
         {
-            levelId = _contexts.game.levelInfo.curLevelId + 1;
-            if (levelId > _contexts.game.gameConfig.config.GetLevelTotalNum())
+            if (_contexts.game.levelInfo.curScore >= _contexts.game.levelInfo.targetScore)
             {
-                levelId = 1;
+                levelId = _contexts.game.levelInfo.curLevelId + 1;
+                if (levelId > _contexts.game.gameConfig.config.GetLevelTotalNum())
+                {
+                    levelId = 1;
+                }
             }
         }
         entity.AddLoadLevel(levelId);
@@ -52,7 +55,7 @@ public class ChangeLevelSystem : ReactiveSystem<GameEntity>
 
     protected override bool Filter(GameEntity entity)
     {
-        return entity.isChangeLevel;
+        return entity.hasChangeLevel;
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)

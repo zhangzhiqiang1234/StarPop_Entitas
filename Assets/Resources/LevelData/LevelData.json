@@ -2,10 +2,10 @@
 	"Datas" : [
 		{
 			"LevelId": 1,
-			"Row": 12,
-			"Col": 10,
+			"Row": 4,
+			"Col": 4,
 			"EndTotalScore" : 500,
-			"EndPreScore" : 50,
+			"EndPreScore" : 200,
 			"TargetScore": 1000
 		},
 		{

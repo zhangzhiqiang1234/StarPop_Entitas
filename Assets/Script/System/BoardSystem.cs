@@ -31,7 +31,7 @@ public class BoardSystem : ReactiveSystem<GameEntity>
                     currentScore = _gameContext.levelInfo.curScore;
                 }
                 _gameContext.ReplaceLevelInfo(data.GetLevelId(), data.GetRow(), data.GetCol(), currentScore, data.GetEndTotalScore(),data.GetEndPreScore(),data.GetTargetScore());
-
+                EventManager.Instance.EventDispatcher.dispatchEvent<int,float,float>(EventEnum.FightUI_Update_LevelInfo,data.GetLevelId(),data.GetTargetScore(),currentScore);
                 return;
             }
 

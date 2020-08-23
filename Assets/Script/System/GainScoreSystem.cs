@@ -32,12 +32,8 @@ public class GainScoreSystem : ReactiveSystem<GameEntity>
 
             LevelInfoComponent levelInfo = _contexts.game.levelInfo;
             _contexts.game.ReplaceLevelInfo(levelInfo.curLevelId, levelInfo.boardRow, levelInfo.boardCol, levelInfo.curScore + score, levelInfo.endTotalScore, levelInfo.endPreScore, levelInfo.targetScore);
-
             //更新UI
-
-            //判断游戏是否结束
-
-
+            EventManager.Instance.EventDispatcher.dispatchEvent<int,float,float>(EventEnum.FightUI_Update_LevelInfo, _contexts.game.levelInfo.curLevelId, _contexts.game.levelInfo.targetScore, _contexts.game.levelInfo.curScore);
         }
     }
 

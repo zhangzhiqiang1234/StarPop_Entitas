@@ -82,7 +82,7 @@ Shader "Star_Entitas/SelectShader"
 
 				float w = l*r*u*d;
 
-				col.rgb = lerp(_EdgeColor.rgb * lerp(1,( abs(cos(_Time.w))*0.5+0.7),_Flash) ,col.rgb,w);
+				col.rgba = lerp(_EdgeColor.rgba * lerp(1,( abs(cos(_Time.w))*0.5+0.7),_Flash) ,col.rgba,w);
 				return col;
 			}
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UIFrameWork;
 
 public class GameControllerBehaviour : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class GameControllerBehaviour : MonoBehaviour
     void Start()
     {
         _gameController.Initialize();
+        UIManager.Instance.ShowView(UIType.Fight_MainView);
     }
 
     // Update is called once per frame

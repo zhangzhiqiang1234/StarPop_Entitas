@@ -154,6 +154,7 @@
 				float w = l*r*u*d;
 
 				c.rgb = lerp(_EdgeColor.rgb * lerp(1,( abs(cos(_Time.w))*0.5+0.7),_Flash) ,c.rgb,w);
+				c.a = lerp(1,c.a,w);
 
 				c.rgb *= c.a;
 				return c;

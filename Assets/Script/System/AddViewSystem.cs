@@ -15,7 +15,7 @@ public sealed class AddViewSystem : ReactiveSystem<GameEntity>
         {
             e.AddComponent(GameComponentsLookup.View,new ViewComponent());
             //发送事件，创建视图
-            _contexts.game.eventDispatcher.dispatchEvent<GameEntity>(EventEnum.FIGHT_CREATEVIEW, e);
+            EventManager.Instance.EventDispatcher.dispatchEvent<GameEntity>(EventEnum.FightUI_CreateView, e);
         }
     }
 

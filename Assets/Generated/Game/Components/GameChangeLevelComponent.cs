@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly ChangeLevelComponent changeLevelComponent = new ChangeLevelComponent();
+    public ChangeLevelComponent changeLevel { get { return (ChangeLevelComponent)GetComponent(GameComponentsLookup.ChangeLevel); } }
+    public bool hasChangeLevel { get { return HasComponent(GameComponentsLookup.ChangeLevel); } }
 
-    public bool isChangeLevel {
-        get { return HasComponent(GameComponentsLookup.ChangeLevel); }
-        set {
-            if (value != isChangeLevel) {
-                var index = GameComponentsLookup.ChangeLevel;
-                if (value) {
-                    var componentPool = GetComponentPool(index);
-                    var component = componentPool.Count > 0
-                            ? componentPool.Pop()
-                            : changeLevelComponent;
+    public void AddChangeLevel(bool newIsExit) {
+        var index = GameComponentsLookup.ChangeLevel;
+        var component = (ChangeLevelComponent)CreateComponent(index, typeof(ChangeLevelComponent));
+        component.isExit = newIsExit;
+        AddComponent(index, component);
+    }
 
-                    AddComponent(index, component);
-                } else {
-                    RemoveComponent(index);
-                }
-            }
-        }
+    public void ReplaceChangeLevel(bool newIsExit) {
+        var index = GameComponentsLookup.ChangeLevel;
+        var component = (ChangeLevelComponent)CreateComponent(index, typeof(ChangeLevelComponent));
+        component.isExit = newIsExit;
+        ReplaceComponent(index, component);
+    }
+
+    public void RemoveChangeLevel() {
+        RemoveComponent(GameComponentsLookup.ChangeLevel);
     }
 }
 

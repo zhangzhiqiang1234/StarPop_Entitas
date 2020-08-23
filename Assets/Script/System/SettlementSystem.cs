@@ -40,6 +40,7 @@ public class SettlementSystem : IExecuteSystem
         _contexts.game.ReplaceLevelInfo(levelInfo.curLevelId,levelInfo.boardRow, levelInfo.boardCol, levelInfo.curScore+addScore, levelInfo.endTotalScore,levelInfo.endPreScore, levelInfo.targetScore);
 
         //通知UI表现
-        _contexts.game.eventDispatcher.dispatchEvent<int, int, int, int>(EventEnum.FIGHT_SETTLEMENT, starNum, totalScore, preScore, levelInfo.curScore);
+        //EventManager.Instance.EventDispatcher.dispatchEvent<int, float, float>(EventEnum.FightUI_Update_LevelInfo, _contexts.game.levelInfo.curLevelId, _contexts.game.levelInfo.targetScore, _contexts.game.levelInfo.curScore);
+        EventManager.Instance.EventDispatcher.dispatchEvent<int, int, int, int>(EventEnum.FightUI_Settlement, starNum, totalScore, preScore, levelInfo.curScore);
     }
 }
