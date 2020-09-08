@@ -17,12 +17,12 @@ public class BoardViewBehaviour : MonoBehaviour
 
     private void settlementPerform(int starNum, int totalScore, int preScore, int curScore)
     {
-        StartCoroutine(deleteStarPerform(starNum,totalScore,preScore,curScore));
+        StarSettlementView settlementView = UIManager.Instance.ShowView<StarSettlementView>(UIType.Fight_StarSettlementView);
+        StartCoroutine(deleteStarPerform(starNum,totalScore,preScore,curScore,settlementView));
     }
 
-    private IEnumerator deleteStarPerform(int starNum, int totalScore, int preScore, int curScore)
+    private IEnumerator deleteStarPerform(int starNum, int totalScore, int preScore, int curScore, StarSettlementView settlementView)
     {
-
         for (int i = starNum - 1; i >= 0; i--)
         {
             GameObject starObject = gameObject.transform.GetChild(i).gameObject;
@@ -31,11 +31,14 @@ public class BoardViewBehaviour : MonoBehaviour
             totalScore = totalScore >= 0 ? totalScore : 0;
             //播放消失动画
 
+            settlementView.UpdateScore(totalScore);
             if (totalScore > 0)
             {
                 yield return new WaitForSeconds(0.5f);
             }
         }
+        UIManager.Instance.CloseView(settlementView.GetViewID());
+
         //更新当前分数
         EventManager.Instance.EventDispatcher.dispatchEvent<int, float, float>(EventEnum.FightUI_Update_LevelInfo, -1, -1, curScore);
         ChangeLevelView changeLevelView = UIManager.Instance.ShowView<ChangeLevelView>(UIType.Fight_ChangeLevelView);

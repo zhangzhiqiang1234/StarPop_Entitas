@@ -9,6 +9,11 @@
 			"uiType": 2,
 			"uiLayer": 2,
 			"prefabPath": "UIPrefabs/ChangeLevelView"
+		},
+		{
+			"uiType": 3,
+			"uiLayer": 2,
+			"prefabPath": "UIPrefabs/StarSettlementView"
 		}
 	]
 }
